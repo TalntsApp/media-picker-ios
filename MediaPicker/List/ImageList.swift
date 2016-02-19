@@ -16,7 +16,7 @@ import Argo
 
 import Signals
 
-class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
+public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
     
     static var authorizationStatus: PHAuthorizationStatus {
         return PHPhotoLibrary.authorizationStatus()
@@ -58,7 +58,7 @@ class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
     }
     
     private(set) var photosOnly: Bool = false
-    convenience init(photosOnly: Bool = false) {
+    convenience public init(photosOnly: Bool = false) {
         let bundle = NSBundle(forClass: ImageList.self)
         self.init(nibName: "ImageList", bundle: bundle)
         self.photosOnly = photosOnly
@@ -68,11 +68,11 @@ class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
         super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         setupAssetsUpdate()
@@ -101,7 +101,7 @@ class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
         }
     }
     
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         if
@@ -128,7 +128,7 @@ class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
         }
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override public func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         setupLayout()
     }
@@ -148,19 +148,19 @@ class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
         }
     }
     
-    func photoLibraryDidChange(changeInstance: PHChange) {
+    public func photoLibraryDidChange(changeInstance: PHChange) {
         self.setupAssetsUpdate()
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return self.assets.count
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.assets[section].assets.count
     }
     
-    override func collectionView(
+    override public func collectionView(
         collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
         atIndexPath indexPath: NSIndexPath
@@ -173,7 +173,7 @@ class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
         return titleView
     }
     
-    override func collectionView(
+    override public func collectionView(
         collectionView: UICollectionView,
         willDisplaySupplementaryView view: UICollectionReusableView,
         forElementKind elementKind: String,
@@ -185,25 +185,25 @@ class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
         titleView.titleLabel.text = name
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(AssetsCell.defaultIdentifier, forIndexPath: indexPath) as! AssetsCell
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    override public func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         let assetsCell = cell as! AssetsCell
         let asset = self.assets[indexPath.section].assets[indexPath.item]
         
         assetsCell.setupPreview(asset)
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let asset = self.assets[indexPath.section].assets[indexPath.item]
         collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
         selectionHandle(indexPath, asset)
     }
     
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override public func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
@@ -218,7 +218,7 @@ class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver {
     }
     
     let scrollSignal: Signal<CGFloat> = Signal()
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override public func scrollViewDidScroll(scrollView: UIScrollView) {
         asyncWith(scrollView, priority: .Main) { [weak self] in
             let offset = -scrollView.contentOffset.y
             self?.scrollSignal.fire(offset)

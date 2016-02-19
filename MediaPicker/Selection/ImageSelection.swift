@@ -16,7 +16,7 @@ import Argo
 
 import BABCropperView
 
-class ImageSelection: UIView, ImageSource, VideoSource {
+public class ImageSelection: UIView, ImageSource, VideoSource {
     
     var onImageReady: (UIImage -> Void)?
     var onVideoReady: (AVURLAsset -> Void)?
@@ -39,7 +39,7 @@ class ImageSelection: UIView, ImageSource, VideoSource {
     
     @IBInspectable var photosOnly: Bool = false
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         let bundle = NSBundle(forClass: ImageSelection.self)
@@ -109,7 +109,7 @@ class ImageSelection: UIView, ImageSource, VideoSource {
         }
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         setupCropper()
