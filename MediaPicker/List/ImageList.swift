@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Ramotion. All rights reserved.
 //
 
-import MobileCoreServices
-
 import UIKit
 import AVFoundation
 

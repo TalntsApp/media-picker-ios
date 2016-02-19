@@ -27,6 +27,9 @@
 		9863DC6E1C77629600F033BB /* ImageSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9863DC5E1C77629600F033BB /* ImageSelection.xib */; };
 		9863DC6F1C77629600F033BB /* ImageListTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863DC601C77629600F033BB /* ImageListTitleView.swift */; };
 		9863DC701C77629600F033BB /* ImageListTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9863DC611C77629600F033BB /* ImageListTitleView.xib */; };
+		9863DC731C77698B00F033BB /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9863DC721C77698B00F033BB /* Photos.framework */; };
+		9863DC771C7769DB00F033BB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9863DC761C7769DB00F033BB /* AVFoundation.framework */; };
+		9863DC791C7769E100F033BB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9863DC781C7769E100F033BB /* MediaPlayer.framework */; };
 		DEE2A26F247C3DD73848A506 /* Pods_MediaPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E7F702207CB3CAF131818D4 /* Pods_MediaPicker.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,10 @@
 		9863DC5E1C77629600F033BB /* ImageSelection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageSelection.xib; sourceTree = "<group>"; };
 		9863DC601C77629600F033BB /* ImageListTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListTitleView.swift; sourceTree = "<group>"; };
 		9863DC611C77629600F033BB /* ImageListTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageListTitleView.xib; sourceTree = "<group>"; };
+		9863DC721C77698B00F033BB /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		9863DC741C7769AE00F033BB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		9863DC761C7769DB00F033BB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9863DC781C7769E100F033BB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BE8AD95391BA3AB1DDF5A045 /* Pods_ImageList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C020490B6EAAB9C6154D793F /* Pods-MediaPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaPicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediaPicker/Pods-MediaPicker.release.xcconfig"; sourceTree = "<group>"; };
 		D99FF7CD9EB64406963FDCBC /* Pods-MediaPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaPicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediaPicker/Pods-MediaPicker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9863DC791C7769E100F033BB /* MediaPlayer.framework in Frameworks */,
+				9863DC771C7769DB00F033BB /* AVFoundation.framework in Frameworks */,
+				9863DC731C77698B00F033BB /* Photos.framework in Frameworks */,
 				DEE2A26F247C3DD73848A506 /* Pods_MediaPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +239,10 @@
 		F1567D64BE4767FA53903732 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9863DC781C7769E100F033BB /* MediaPlayer.framework */,
+				9863DC761C7769DB00F033BB /* AVFoundation.framework */,
+				9863DC741C7769AE00F033BB /* MobileCoreServices.framework */,
+				9863DC721C77698B00F033BB /* Photos.framework */,
 				BE8AD95391BA3AB1DDF5A045 /* Pods_ImageList.framework */,
 				0E7F702207CB3CAF131818D4 /* Pods_MediaPicker.framework */,
 			);

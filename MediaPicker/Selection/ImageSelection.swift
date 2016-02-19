@@ -9,16 +9,13 @@
 import UIKit
 import MediaPlayer
 import AVFoundation
-import AssetsLibrary
 import Photos
 
 import Runes
 import Argo
 
-import simd
 import BABCropperView
 
-@IBDesignable
 class ImageSelection: UIView, ImageSource, VideoSource {
     
     var onImageReady: (UIImage -> Void)?
