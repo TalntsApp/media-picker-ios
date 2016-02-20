@@ -79,7 +79,6 @@
             <constraints>
                 <constraint firstItem="OUB-FF-VfZ" firstAttribute="top" secondItem="46v-59-nS7" secondAttribute="bottom" id="7bq-N2-eRs"/>
                 <constraint firstAttribute="trailing" secondItem="46v-59-nS7" secondAttribute="trailing" id="8hH-I1-9VX"/>
-                <constraint firstItem="46v-59-nS7" firstAttribute="height" relation="lessThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:2" constant="1" id="Cr4-c7-72i"/>
                 <constraint firstItem="46v-59-nS7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IHs-se-WC9"/>
                 <constraint firstItem="uQh-AN-1qz" firstAttribute="top" secondItem="OUB-FF-VfZ" secondAttribute="bottom" id="KpM-nl-Zmj"/>
                 <constraint firstAttribute="bottom" secondItem="uQh-AN-1qz" secondAttribute="bottom" id="LL5-CG-MX3"/>
@@ -93,7 +92,6 @@
             </constraints>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="Cr4-c7-72i"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="565" y="292"/>

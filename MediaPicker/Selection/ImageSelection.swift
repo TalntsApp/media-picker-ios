@@ -192,25 +192,18 @@ public class ImageSelection: UIView, ImageSource, VideoSource {
         //                    }
     }
     
-    private var offsets: Set<CGFloat> = []
     private func handleScroll(offset: CGFloat) {
-        if offsets.count > 5 {
-            offsets.removeFirst()
-        }
-        offsets = offsets.union([offset])
-        guard self.largePreviewConstraint.constant != offset && !offsets.contains(offset) else {
-            return
-        }
         
         if self.previewState == .FreeScroll {
-            self.largePreviewConstraint?.constant = offset
-            
-            let verticalTransform = round((offset/self.largePreview.frame.height + 1/2) * 2)
-            
             self.upButton.synced {
                 Animate(duration: 0.6, options: .CurveEaseOut)
                     .animation { [weak self] in
-                        self?.upButtonIcon.transform = CGAffineTransformMakeScale(1.0, clip(low: -1.0, high: 1.0)(value: verticalTransform))
+                        if let `self` = self {
+                            self.largePreviewConstraint?.constant = offset
+                            
+                            let verticalTransform = round((offset/self.largePreview.frame.height + 1/2) * 2)
+                            self.upButtonIcon.transform = CGAffineTransformMakeScale(1.0, clip(low: -1.0, high: 1.0)(value: verticalTransform))
+                        }
                     }
                     .fire()
             }
