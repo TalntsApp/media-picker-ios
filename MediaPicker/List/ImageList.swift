@@ -1,11 +1,3 @@
-//
-//  ImageList.swift
-//  Talnts
-//
-//  Created by Mikhail Stepkin on 30.07.15.
-//  Copyright (c) 2015 Ramotion. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 

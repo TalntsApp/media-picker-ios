@@ -1,11 +1,3 @@
-//
-//  Helpers.swift
-//  ImageList
-//
-//  Created by Mikhail Stepkin on 08.02.16.
-//  Copyright © 2016 Ramotion. All rights reserved.
-//
-
 import Foundation
 import AVFoundation
 

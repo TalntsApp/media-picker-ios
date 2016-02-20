@@ -1,11 +1,3 @@
-//
-//  ImageListTitleView.swift
-//  Talnts
-//
-//  Created by Mikhail Stepkin on 15.12.15.
-//  Copyright © 2015 Ramotion. All rights reserved.
-//
-
 import UIKit
 
 class ImageListTitleView: UICollectionReusableView, RegisterableReusableView {
