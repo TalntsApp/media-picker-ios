@@ -50,6 +50,7 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
                         {
                             let indexPath = NSIndexPath(forItem: 0, inSection: 0)
                             self?.selectionHandle(indexPath, asset)
+                            collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .None)
                         }
                     }
                 }
