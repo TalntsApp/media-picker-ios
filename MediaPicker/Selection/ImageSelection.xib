@@ -7,7 +7,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageSelection" customModule="ImageList" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageSelection" customModule="MediaPicker" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="ktk-6u-b8m" id="zhl-Sf-0yd"/>
                 <outlet property="collectionHost" destination="uQh-AN-1qz" id="bGC-Vf-ag4"/>
@@ -25,25 +25,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQh-AN-1qz" userLabel="There Be Images">
-                    <rect key="frame" x="0.0" y="341" width="600" height="259"/>
+                    <rect key="frame" x="0.0" y="600" width="600" height="0.0"/>
                     <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="46v-59-nS7" userLabel="Large Preview" customClass="BABCropperView">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="301"/>
-                    <subviews>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ktk-6u-b8m">
-                            <rect key="frame" x="282" y="132" width="37" height="37"/>
-                        </activityIndicatorView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="centerY" secondItem="ktk-6u-b8m" secondAttribute="centerY" id="4Uj-rt-wbq"/>
-                        <constraint firstItem="ktk-6u-b8m" firstAttribute="centerX" secondItem="46v-59-nS7" secondAttribute="centerX" id="FC7-OR-Wet"/>
-                        <constraint firstAttribute="width" secondItem="46v-59-nS7" secondAttribute="height" multiplier="1:1" priority="750" id="gDM-fp-QfN"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="OUB-FF-VfZ" userLabel="Up button">
-                    <rect key="frame" x="0.0" y="301" width="600" height="40"/>
+                    <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up-button" translatesAutoresizingMaskIntoConstraints="NO" id="Nfk-kI-T7v">
                             <rect key="frame" x="292" y="4" width="16" height="33"/>
@@ -73,6 +59,20 @@
                         <constraint firstItem="Ib5-7Y-Rvs" firstAttribute="centerY" secondItem="Nfk-kI-T7v" secondAttribute="centerY" id="ffi-vM-mGQ"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="46v-59-nS7" userLabel="Large Preview" customClass="BABCropperView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ktk-6u-b8m">
+                            <rect key="frame" x="282" y="262" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="ktk-6u-b8m" secondAttribute="centerY" id="4Uj-rt-wbq"/>
+                        <constraint firstItem="ktk-6u-b8m" firstAttribute="centerX" secondItem="46v-59-nS7" secondAttribute="centerX" id="FC7-OR-Wet"/>
+                        <constraint firstAttribute="width" secondItem="46v-59-nS7" secondAttribute="height" multiplier="1:1" priority="750" id="gDM-fp-QfN"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -91,6 +91,11 @@
                 <constraint firstAttribute="trailing" secondItem="OUB-FF-VfZ" secondAttribute="trailing" id="cLR-cR-ZE9"/>
                 <constraint firstItem="OUB-FF-VfZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hbG-h4-USY"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Cr4-c7-72i"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="565" y="292"/>
         </view>
     </objects>

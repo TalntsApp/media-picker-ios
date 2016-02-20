@@ -22,6 +22,8 @@ public class ImageSelection: UIView, ImageSource, VideoSource {
     var onVideoReady: (AVURLAsset -> Void)?
     var onClose: (() -> Void)?
     
+    private weak var selectedAsset: PHAsset?
+    
     @IBOutlet var view: UIView?
     
     @IBOutlet var largePreviewConstraint: NSLayoutConstraint!
@@ -153,7 +155,7 @@ public class ImageSelection: UIView, ImageSource, VideoSource {
     }
     
     private func handleSelection(indexPath: NSIndexPath, _ asset: PHAsset) {
-        //            self.selectedAsset = asset
+        self.selectedAsset = asset
         
         self.activityIndicator.hidden = false
         self.activityIndicator.startAnimating()
@@ -190,11 +192,20 @@ public class ImageSelection: UIView, ImageSource, VideoSource {
         //                    }
     }
     
+    private var offsets: Set<CGFloat> = []
     private func handleScroll(offset: CGFloat) {
+        if offsets.count > 5 {
+            offsets.removeFirst()
+        }
+        offsets = offsets.union([offset])
+        guard self.largePreviewConstraint.constant != offset && !offsets.contains(offset) else {
+            return
+        }
+        
         if self.previewState == .FreeScroll {
             self.largePreviewConstraint?.constant = offset
             
-            let verticalTransform = (offset/self.largePreview.frame.height + 1/2) * 2
+            let verticalTransform = round((offset/self.largePreview.frame.height + 1/2) * 2)
             
             self.upButton.synced {
                 Animate(duration: 0.6, options: .CurveEaseOut)
