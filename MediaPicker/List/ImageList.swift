@@ -89,15 +89,20 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
             let layout = self.collectionViewLayout as? UICollectionViewFlowLayout,
             let collectionWidth = self.collectionView?.frame.width
         {
-            let itemsNumber: CGFloat = 4
-            let interNumber: CGFloat = max(itemsNumber - 1, 1.0)
-            let distance:CGFloat = 1.0/interNumber
-            let itemWidth = floor((collectionWidth - itemsNumber * distance)/itemsNumber)
-            layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-            layout.minimumInteritemSpacing = distance
-            layout.minimumLineSpacing      = 2 * distance
-            
-            layout.headerReferenceSize     = CGSize(width: collectionWidth, height: 44)
+            let width = min(collectionWidth, self.view.frame.width, self.view.frame.height)
+            Animate(duration: 30, options: UIViewAnimationOptions.CurveEaseOut)
+                .animation {
+                    let itemsNumber: CGFloat = 4
+                    let interNumber: CGFloat = max(itemsNumber - 1, 1.0)
+                    let distance:CGFloat = 1.0/interNumber
+                    let itemWidth = min(150, floor((width - itemsNumber * distance)/itemsNumber))
+                    layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+                    layout.minimumInteritemSpacing = distance
+                    layout.minimumLineSpacing      = 2 * distance
+                    
+                    layout.headerReferenceSize     = CGSize(width: width, height: 44)
+                }
+                .fire()
         }
     }
     
@@ -130,7 +135,9 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
     
     override public func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        setupLayout()
+        coordinator.animateAlongsideTransition(nil) { [weak self] _ in
+            self?.setupLayout()
+        }
     }
     
     private var assetsSignal: Signal<[AssetsSection]>?
@@ -165,12 +172,12 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
         viewForSupplementaryElementOfKind kind: String,
         atIndexPath indexPath: NSIndexPath
         ) -> UICollectionReusableView {
-        let titleView = collectionView.dequeueReusableSupplementaryViewOfKind(
-            kind,
-            withReuseIdentifier: ImageListTitleView.defaultIdentifier,
-            forIndexPath: indexPath
-            ) as! ImageListTitleView
-        return titleView
+            let titleView = collectionView.dequeueReusableSupplementaryViewOfKind(
+                kind,
+                withReuseIdentifier: ImageListTitleView.defaultIdentifier,
+                forIndexPath: indexPath
+                ) as! ImageListTitleView
+            return titleView
     }
     
     override public func collectionView(
@@ -179,10 +186,10 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
         forElementKind elementKind: String,
         atIndexPath indexPath: NSIndexPath
         ) {
-        let titleView = view as! ImageListTitleView
-        let name = self.assets[indexPath.section].name
-        
-        titleView.titleLabel.text = name
+            let titleView = view as! ImageListTitleView
+            let name = self.assets[indexPath.section].name
+            
+            titleView.titleLabel.text = name
     }
     
     override public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -234,8 +241,8 @@ extension UICollectionView {
         cellType: CellType.Type = CellType.self,
         identifier: String = CellType.self.defaultIdentifier
         ) -> CellType.Type {
-        cellType.self.registerAtCollectionView(self, identifier: identifier)
-        return cellType
+            cellType.self.registerAtCollectionView(self, identifier: identifier)
+            return cellType
     }
     
     func registerReusableView<ViewType: RegisterableReusableView>(
@@ -243,8 +250,8 @@ extension UICollectionView {
         kind: ReusableViewKind = .Header,
         identifier: String = ViewType.self.defaultIdentifier
         ) -> ViewType.Type {
-        viewType.self.registerAtCollectionView(self, kind: kind, identifier: identifier)
-        return viewType
+            viewType.self.registerAtCollectionView(self, kind: kind, identifier: identifier)
+            return viewType
     }
     
 }
