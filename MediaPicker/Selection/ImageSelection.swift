@@ -242,38 +242,38 @@ public class ImageSelection: UIView, ImageSource, VideoSource {
         videoPreview.addSubview(player)
         videoPreview.bringSubviewToFront(player)
         
-        //        if
-        //            let vc = player.viewController as? MPMoviePlayerViewController,
-        //            let mp = vc.moviePlayer
-        //        {
-        //            mp.controlStyle = .None
-        //            mp.shouldAutoplay = false
-        UIApplication.sharedApplication().statusBarHidden = statusBarHidden
-        
-        //            let playControlView = PlayControlView(frame: player.bounds)
-        //            playControlView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        //            player.addSubview(playControlView)
-        //
-        //            playControlView.onTouchDown.listen(self) { [weak playControlView] in
-        //                if let state = playControlView?.playControlState {
-        //                    switch state {
-        //                    case .Pause:
-        //                        mp.pause()
-        //                    case .Play:
-        //                        mp.play()
-        //                    default:
-        //                        break
-        //                    }
-        //                }
-        //            }
-        //            playControlView.playControlState = .Play
-        //                playControlView.enableTouch = true
-        //            self.videoPlayControl = playControlView
-        //
-        //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoPlaybackStateChanged:"), name: MPMoviePlayerPlaybackStateDidChangeNotification, object: mp)
-        //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoWentFullscreen:"), name: MPMoviePlayerWillEnterFullscreenNotification, object: mp)
-        //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoReturnedFromFullscreen:"), name: MPMoviePlayerDidExitFullscreenNotification, object: mp)
-        //        }
+        if
+            let vc = player.viewController as? MPMoviePlayerViewController,
+            let mp = vc.moviePlayer
+        {
+            //            mp.controlStyle = .None
+            mp.shouldAutoplay = false
+            UIApplication.sharedApplication().statusBarHidden = statusBarHidden
+            
+            //            let playControlView = PlayControlView(frame: player.bounds)
+            //            playControlView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            //            player.addSubview(playControlView)
+            //
+            //            playControlView.onTouchDown.listen(self) { [weak playControlView] in
+            //                if let state = playControlView?.playControlState {
+            //                    switch state {
+            //                    case .Pause:
+            //                        mp.pause()
+            //                    case .Play:
+            //                        mp.play()
+            //                    default:
+            //                        break
+            //                    }
+            //                }
+            //            }
+            //            playControlView.playControlState = .Play
+            //                playControlView.enableTouch = true
+            //            self.videoPlayControl = playControlView
+            //
+            //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoPlaybackStateChanged:"), name: MPMoviePlayerPlaybackStateDidChangeNotification, object: mp)
+            //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoWentFullscreen:"), name: MPMoviePlayerWillEnterFullscreenNotification, object: mp)
+            //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoReturnedFromFullscreen:"), name: MPMoviePlayerDidExitFullscreenNotification, object: mp)
+        }
     }
     
 }
