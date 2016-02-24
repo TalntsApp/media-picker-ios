@@ -34,8 +34,6 @@
 
 /* Begin PBXFileReference section */
 		0E7F702207CB3CAF131818D4 /* Pods_MediaPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediaPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		85E291C9143CE957EEE18F4C /* Pods-ImageList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageList.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageList/Pods-ImageList.release.xcconfig"; sourceTree = "<group>"; };
-		8A73FA50D096D8ABA5DCE9D7 /* Pods-ImageList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageList/Pods-ImageList.debug.xcconfig"; sourceTree = "<group>"; };
 		980ECAF21C7DE45B00EAB37C /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		980ECAF41C7DE45B00EAB37C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		980ECAF61C7DE45B00EAB37C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,8 +91,6 @@
 		1AEFF509711FA384DF511521 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8A73FA50D096D8ABA5DCE9D7 /* Pods-ImageList.debug.xcconfig */,
-				85E291C9143CE957EEE18F4C /* Pods-ImageList.release.xcconfig */,
 				D99FF7CD9EB64406963FDCBC /* Pods-MediaPicker.debug.xcconfig */,
 				C020490B6EAAB9C6154D793F /* Pods-MediaPicker.release.xcconfig */,
 			);
@@ -576,6 +572,7 @@
 				980ECB031C7DE45B00EAB37C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		984B65E01C68C9B200F453C9 /* Build configuration list for PBXProject "MediaPicker" */ = {
 			isa = XCConfigurationList;
