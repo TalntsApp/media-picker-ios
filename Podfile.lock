@@ -1,7 +1,7 @@
 PODS:
   - Argo (2.2.0)
   - BABCropperView (0.4.6)
-  - Runes (3.1.0)
+  - Runes (3.2.0)
   - Signals (2.3.0)
 
 DEPENDENCIES:
@@ -13,7 +13,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Argo: 4f52a32b4cd913c204e5a45f420b3fccad3e3f24
   BABCropperView: 908858c9fd17e9bb6d2446f3ae56172c14363974
-  Runes: 21c2d32b740a0091dbf036517971278ca9f700b3
+  Runes: ab2f892272d5165f64620f8086578b28cde98a02
   Signals: d47128787e1675858f956556397e482fd667bd96
 
 COCOAPODS: 0.39.0

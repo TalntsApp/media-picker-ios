@@ -42,7 +42,7 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
                         {
                             let indexPath = NSIndexPath(forItem: 0, inSection: 0)
                             self?.selectionHandle(indexPath, asset)
-                            collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+                            collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .CenteredVertically)
                         }
                     }
                 }
@@ -210,6 +210,7 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
     let selectionSignal: Signal<(NSIndexPath, PHAsset)> = Signal()
     private func selectionHandle(indexPath: NSIndexPath, _ asset: PHAsset) {
         async(.Main) { [weak self] in
+            self?.collectionView?.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .CenteredVertically)
             if let selectionSignal = self?.selectionSignal
             {
                 selectionSignal.fire(indexPath, asset)
