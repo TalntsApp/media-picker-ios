@@ -129,7 +129,15 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
     override public func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         coordinator.animateAlongsideTransition(nil) { [weak self] _ in
-            self?.setupLayout()
+            if
+                let `self` = self,
+                let collectionView = self.collectionView
+            {
+                collectionView.synced {
+                    self.setupLayout()
+                    collectionView.reloadData()
+                }
+            }
         }
     }
     
@@ -181,7 +189,7 @@ public class ImageList: UICollectionViewController, PHPhotoLibraryChangeObserver
         ) {
             let titleView = view as! ImageListTitleView
             let name = self.assets[indexPath.section].name
-            
+
             titleView.titleLabel.text = name
     }
     
