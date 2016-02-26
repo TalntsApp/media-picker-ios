@@ -1,3 +1,11 @@
+//
+//  AppDelegate.swift
+//  Example
+//
+//  Created by Mikhail Stepkin on 26.02.16.
+//  Copyright © 2016 Ramotion. All rights reserved.
+//
+
 import UIKit
 
 @UIApplicationMain

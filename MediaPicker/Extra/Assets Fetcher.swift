@@ -24,9 +24,9 @@ func getAssets(photosOnly: Bool) -> Signal<AssetsSection> {
     let videoResult       = PHAssetCollection.fetchAssetCollectionsWithType(.SmartAlbum, subtype: .SmartAlbumVideos, options: options)
     let albumResult       = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: options)
     
-    for result in [photoStreamResult, favoritesResult, videoResult, albumResult] {
-        for assetCollection in result {
-            if let assetCollection = assetCollection as? PHAssetCollection {
+    [photoStreamResult, favoritesResult, videoResult, albumResult].forEach { result in
+        result.forEach {
+            if let assetCollection = $0 as? PHAssetCollection {
                 let assets = enumerateAssets(assetCollection, photosOnly: photosOnly)
                 if assets.count > 0 {
                     async(.Main) {

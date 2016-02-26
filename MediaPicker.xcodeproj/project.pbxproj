@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		980ECAF51C7DE45B00EAB37C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980ECAF41C7DE45B00EAB37C /* AppDelegate.swift */; };
-		980ECAF71C7DE45B00EAB37C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980ECAF61C7DE45B00EAB37C /* ViewController.swift */; };
-		980ECAFA1C7DE45B00EAB37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980ECAF81C7DE45B00EAB37C /* Main.storyboard */; };
-		980ECAFC1C7DE45B00EAB37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 980ECAFB1C7DE45B00EAB37C /* Assets.xcassets */; };
-		980ECAFF1C7DE45B00EAB37C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980ECAFD1C7DE45B00EAB37C /* LaunchScreen.storyboard */; };
-		980ECB041C7DE46300EAB37C /* MediaPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984B65E61C68C9B200F453C9 /* MediaPicker.framework */; };
 		9863DC631C77629600F033BB /* AssetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863DC501C77629600F033BB /* AssetsCell.swift */; };
 		9863DC641C77629600F033BB /* AssetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9863DC511C77629600F033BB /* AssetsCell.xib */; };
 		9863DC651C77629600F033BB /* Assets Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863DC531C77629600F033BB /* Assets Fetcher.swift */; };
@@ -34,13 +28,6 @@
 
 /* Begin PBXFileReference section */
 		0E7F702207CB3CAF131818D4 /* Pods_MediaPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediaPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		980ECAF21C7DE45B00EAB37C /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		980ECAF41C7DE45B00EAB37C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		980ECAF61C7DE45B00EAB37C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		980ECAF91C7DE45B00EAB37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		980ECAFB1C7DE45B00EAB37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		980ECAFE1C7DE45B00EAB37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		980ECB001C7DE45B00EAB37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984B65E61C68C9B200F453C9 /* MediaPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediaPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9863DC501C77629600F033BB /* AssetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsCell.swift; sourceTree = "<group>"; };
 		9863DC511C77629600F033BB /* AssetsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssetsCell.xib; sourceTree = "<group>"; };
@@ -66,14 +53,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		980ECAEF1C7DE45B00EAB37C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				980ECB041C7DE46300EAB37C /* MediaPicker.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		984B65E21C68C9B200F453C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,24 +76,10 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		980ECAF31C7DE45B00EAB37C /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				980ECAF41C7DE45B00EAB37C /* AppDelegate.swift */,
-				980ECAF61C7DE45B00EAB37C /* ViewController.swift */,
-				980ECAF81C7DE45B00EAB37C /* Main.storyboard */,
-				980ECAFB1C7DE45B00EAB37C /* Assets.xcassets */,
-				980ECAFD1C7DE45B00EAB37C /* LaunchScreen.storyboard */,
-				980ECB001C7DE45B00EAB37C /* Info.plist */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
 		984B65DC1C68C9B200F453C9 = {
 			isa = PBXGroup;
 			children = (
 				9863DC4E1C77629600F033BB /* MediaPicker */,
-				980ECAF31C7DE45B00EAB37C /* Example */,
 				984B65E71C68C9B200F453C9 /* Products */,
 				1AEFF509711FA384DF511521 /* Pods */,
 				F1567D64BE4767FA53903732 /* Frameworks */,
@@ -125,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				984B65E61C68C9B200F453C9 /* MediaPicker.framework */,
-				980ECAF21C7DE45B00EAB37C /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,7 +102,6 @@
 				9863DC591C77629600F033BB /* List */,
 				9863DC5C1C77629600F033BB /* Selection */,
 				9863DC5F1C77629600F033BB /* TitleView */,
-				9863DC621C77629600F033BB /* VideoCrop */,
 				9863DC711C77631100F033BB /* Supporting files */,
 			);
 			path = MediaPicker;
@@ -190,13 +153,6 @@
 			path = TitleView;
 			sourceTree = "<group>";
 		};
-		9863DC621C77629600F033BB /* VideoCrop */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = VideoCrop;
-			sourceTree = "<group>";
-		};
 		9863DC711C77631100F033BB /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,23 +190,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		980ECAF11C7DE45B00EAB37C /* Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 980ECB011C7DE45B00EAB37C /* Build configuration list for PBXNativeTarget "Example" */;
-			buildPhases = (
-				980ECAEE1C7DE45B00EAB37C /* Sources */,
-				980ECAEF1C7DE45B00EAB37C /* Frameworks */,
-				980ECAF01C7DE45B00EAB37C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Example;
-			productName = Example;
-			productReference = 980ECAF21C7DE45B00EAB37C /* Example.app */;
-			productType = "com.apple.product-type.application";
-		};
 		984B65E51C68C9B200F453C9 /* MediaPicker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 984B65EE1C68C9B200F453C9 /* Build configuration list for PBXNativeTarget "MediaPicker" */;
@@ -281,9 +220,6 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Ramotion;
 				TargetAttributes = {
-					980ECAF11C7DE45B00EAB37C = {
-						CreatedOnToolsVersion = 7.2.1;
-					};
 					984B65E51C68C9B200F453C9 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -303,22 +239,11 @@
 			projectRoot = "";
 			targets = (
 				984B65E51C68C9B200F453C9 /* MediaPicker */,
-				980ECAF11C7DE45B00EAB37C /* Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		980ECAF01C7DE45B00EAB37C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				980ECAFF1C7DE45B00EAB37C /* LaunchScreen.storyboard in Resources */,
-				980ECAFC1C7DE45B00EAB37C /* Assets.xcassets in Resources */,
-				980ECAFA1C7DE45B00EAB37C /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		984B65E41C68C9B200F453C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -367,15 +292,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		980ECAEE1C7DE45B00EAB37C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				980ECAF71C7DE45B00EAB37C /* ViewController.swift in Sources */,
-				980ECAF51C7DE45B00EAB37C /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		984B65E11C68C9B200F453C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -392,50 +308,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		980ECAF81C7DE45B00EAB37C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				980ECAF91C7DE45B00EAB37C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		980ECAFD1C7DE45B00EAB37C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				980ECAFE1C7DE45B00EAB37C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		980ECB021C7DE45B00EAB37C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		980ECB031C7DE45B00EAB37C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		984B65EC1C68C9B200F453C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -565,15 +438,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		980ECB011C7DE45B00EAB37C /* Build configuration list for PBXNativeTarget "Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				980ECB021C7DE45B00EAB37C /* Debug */,
-				980ECB031C7DE45B00EAB37C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		984B65E01C68C9B200F453C9 /* Build configuration list for PBXProject "MediaPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

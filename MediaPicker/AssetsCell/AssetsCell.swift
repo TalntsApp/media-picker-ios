@@ -1,11 +1,3 @@
-//
-//  AssetsCell.swift
-//  Talnts
-//
-//  Created by Mikhail Stepkin on 31.07.15.
-//  Copyright (c) 2015 Ramotion. All rights reserved.
-//
-
 import UIKit
 import Photos
 
