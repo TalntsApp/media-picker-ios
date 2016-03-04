@@ -4,10 +4,9 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageSelection" customModule="MediaPicker" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediaPicker" customModule="MediaPicker" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="ktk-6u-b8m" id="zhl-Sf-0yd"/>
                 <outlet property="collectionHost" destination="uQh-AN-1qz" id="bGC-Vf-ag4"/>
@@ -90,10 +89,6 @@
                 <constraint firstAttribute="trailing" secondItem="OUB-FF-VfZ" secondAttribute="trailing" id="cLR-cR-ZE9"/>
                 <constraint firstItem="OUB-FF-VfZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hbG-h4-USY"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                </mask>
-            </variation>
             <point key="canvasLocation" x="565" y="292"/>
         </view>
     </objects>

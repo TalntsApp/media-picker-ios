@@ -1,9 +1,9 @@
 import UIKit
 
-class ImageListTitleView: UICollectionReusableView, RegisterableReusableView {
+class MediaListTitleView: UICollectionReusableView, RegisterableReusableView {
     
-    static let defaultIdentifier: String = "ImageListTitleView"
-    static let nibName: String? = "ImageListTitleView"
+    static let defaultIdentifier: String = "MediaListTitleView"
+    static let nibName: String? = "MediaListTitleView"
     
     @IBOutlet var titleLabel: UILabel!
 

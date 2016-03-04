@@ -20,16 +20,22 @@ extension Signal {
     
 }
 
-protocol ImageSource {
+/// Implementing type can provide image in `UIImage` asynchronously
+public protocol ImageSource {
     
+    /// Called when `UIImage` is provided
     var onImageReady: (UIImage -> Void)? { get set }
+    /// Called when action was cancelled
     var onClose: (() -> Void)? { get set }
     
 }
 
-protocol VideoSource {
+/// Implementing type can provide video in `AVURLAsset` asynchronously
+public protocol VideoSource {
     
+    /// Called when `AVURLAsset` with video is provided
     var onVideoReady: (AVURLAsset -> Void)? { get set }
+    /// Called when action was cancelled
     var onClose: (() -> Void)? { get set }
     
 }

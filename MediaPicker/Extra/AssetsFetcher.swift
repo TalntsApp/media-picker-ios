@@ -61,24 +61,41 @@ private func enumerateAssets(assetCollection: PHAssetCollection, photosOnly: Boo
 
 extension NSDate: Comparable {}
 
+/** 
+    Compares time intervals since `reference date` of two dates.
+    
+    - returns: `true` if first one is closer to `reference date`, otherwise `false`
+*/
 public func <(lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.timeIntervalSinceReferenceDate < rhs.timeIntervalSinceReferenceDate
 }
 
+/**
+ Compares time intervals since `reference date` of two dates.
+ 
+ - returns: `true` if second one is closer to `reference date`, otherwise `false`
+ */
 public func >(lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.timeIntervalSinceReferenceDate > rhs.timeIntervalSinceReferenceDate
 }
 
 extension PHFetchResult: CollectionType {
     
+    /**
+     Conformity to `SequenceType` protocol
+     
+     - returns: `PHFetchResult` objects generator
+    */
     public func generate() -> PHFetchResultGenerator {
         return Generator(fetchResult: self)
     }
     
+    /// Index of first object in `PHFetchResult`
     public var startIndex: Int {
         return 0
     }
     
+    /// Index of last object in `PHFetchResult`
     public var endIndex: Int {
         return self.count
     }
@@ -91,6 +108,7 @@ extension PHFetchResult: CollectionType {
     
 }
 
+/// `PHFetchResult` objects generator
 public struct PHFetchResultGenerator: GeneratorType {
     private let fetchResult: PHFetchResult
     init(fetchResult: PHFetchResult) {
@@ -99,6 +117,11 @@ public struct PHFetchResultGenerator: GeneratorType {
     }
     
     private var currentIndex: Int
+    /**
+     `GeneratorType` method
+     
+     - returns: Next object from `PHFetchResult`
+    */
     public mutating func next() -> AnyObject? {
         if currentIndex < fetchResult.endIndex {
             let object = fetchResult[currentIndex]

@@ -8,11 +8,20 @@ import Argo
 
 import BABCropperView
 
-public class ImageSelection: UIView, ImageSource, VideoSource {
+/**
+ MediaPicker
+ ----
+ 
+ Control that allows you to pick media from gallery.
+*/
+public class MediaPicker: UIView, ImageSource, VideoSource {
     
-    var onImageReady: (UIImage -> Void)?
-    var onVideoReady: (AVURLAsset -> Void)?
-    var onClose: (() -> Void)?
+    /// Image from gallery was selected
+    public var onImageReady: (UIImage -> Void)?
+    /// Video from gallery was selected
+    public var onVideoReady: (AVURLAsset -> Void)?
+    /// Selection was cancelled
+    public var onClose: (() -> Void)?
     
     private weak var selectedAsset: PHAsset?
     
@@ -33,11 +42,12 @@ public class ImageSelection: UIView, ImageSource, VideoSource {
     
     @IBInspectable var photosOnly: Bool = false
     
+    /// Overrides `UIView`'s `awakeFromNib`
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-        let bundle = NSBundle(forClass: ImageSelection.self)
-        if let _ = bundle.loadNibNamed("ImageSelection", owner: self, options: nil) {
+        let bundle = NSBundle(forClass: MediaPicker.self)
+        if let _ = bundle.loadNibNamed("MediaPicker", owner: self, options: nil) {
             self.view?.frame = self.bounds
             self.addSubview <^> self.view
             
@@ -103,6 +113,7 @@ public class ImageSelection: UIView, ImageSource, VideoSource {
         }
     }
     
+    /// Overrides `UIView`'s `layoutSubviews`
     override public func layoutSubviews() {
         super.layoutSubviews()
         
@@ -114,7 +125,7 @@ public class ImageSelection: UIView, ImageSource, VideoSource {
         self.largePreview.cropSize = CGSize(width: 1242, height: 1242)
     }
     
-    private lazy var imageList:ImageList = ImageList(photosOnly: self.photosOnly)
+    private lazy var imageList:MediaList = MediaList(photosOnly: self.photosOnly)
     private var imageCollection: UICollectionView?
     
     func setup() {
