@@ -12,7 +12,7 @@ import AVFoundation
 import Runes
 import JPSVolumeButtonHandler
 
-class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, ImageSource, VideoSource {
+public class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, ImageSource, VideoSource {
     
     static var authorizationStatus: AVAuthorizationStatus {
         let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
@@ -37,27 +37,28 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, 
     @IBOutlet var recordButton: RecordButton!
     @IBOutlet var timerIndicator: UILabel!
     
-    var onImageReady: (UIImage -> Void)?
-    var onVideoReady: (AVURLAsset -> Void)?
-    var onClose: (() -> Void)?
+    public var onImageReady: (UIImage -> Void)?
+    public var onVideoReady: (AVURLAsset -> Void)?
+    public var onClose: (() -> Void)?
     
-    enum CameraType {
+    public enum CameraType {
         case Photo
         case Video
     }
     private(set) internal var cameraType: CameraType = .Photo
     
-    init(cameraType: CameraType) {
-        super.init(nibName: "CameraVC", bundle: nil)
+    public init(cameraType: CameraType) {
+        let bundle = NSBundle(forClass: CameraVC.self)
+        super.init(nibName: "CameraVC", bundle: bundle)
         
         self.cameraType = cameraType
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         setupButtons()
@@ -141,7 +142,7 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, 
     
     private var volumeHandler: JPSVolumeButtonHandler?
     private var flashObserver: NSObjectProtocol?
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
         
@@ -178,7 +179,7 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, 
         setupBackButton()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         flashObserver = NSNotificationCenter.defaultCenter().addObserverForName(AVCaptureSessionDidStartRunningNotification, object: nil, queue: nil) { notif -> Void in self.updateFlashAndTorch()
@@ -196,7 +197,7 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, 
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override public func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         UIDevice.currentDevice().endGeneratingDeviceOrientationNotifications()
         
@@ -414,9 +415,10 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, 
             let connection = output.connectionWithMediaType(AVMediaTypeVideo)
             where !output.capturingStillImage
         {
-            asyncWith(connection, priority: .High) {
-                output.captureStillImageAsynchronouslyFromConnection(connection) { (b, e) -> Void in
+            asyncWith(connection, priority: .High) { [weak self] in
+                output.captureStillImageAsynchronouslyFromConnection(connection) { [weak self] (b, e) -> Void in
                     if
+                        let `self` = self,
                         let buffer = b,
                         let image  = UIImage.imageFromSampleBuffer(
                             buffer,
@@ -559,13 +561,13 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, 
         self.onClose?()
     }
     
-    func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
+    public func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
         timePassed = 0.0
         timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateOnTimer:"), userInfo: nil, repeats: true)
         recordButton.recording = true
     }
     
-    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
+    public func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
         timer?.invalidate()
         timer = nil
         recordButton.recording = false

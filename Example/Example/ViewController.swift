@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MediaPicker
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var mediaPicker: MediaPicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
