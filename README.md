@@ -1,6 +1,5 @@
 # MediaPicker
-[![Swift 2.1](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
-[![Travis](https://img.shields.io/travis/TalntsApp/media-picker-ios.svg)](https://travis-ci.org/TalntsApp/media-picker-ios)
+[![Swift 2.1](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/) [![Travis](https://img.shields.io/travis/TalntsApp/media-picker-ios.svg)](https://travis-ci.org/TalntsApp/media-picker-ios)
 ----
 
 ## Requirements
