@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6B62A6AC63D1B578DB97F1234361D36B80BBA110",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E964021DD554F9C4701A50D2DEF544206F37A204" : 0,
+    "6B62A6AC63D1B578DB97F1234361D36B80BBA110" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "60340AAE-0028-40C9-B822-07227F34E6C5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E964021DD554F9C4701A50D2DEF544206F37A204" : "talnts-ios\/",
+    "6B62A6AC63D1B578DB97F1234361D36B80BBA110" : "MediaPicker\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MediaPicker",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MediaPicker.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TalntsApp\/media-picker-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6B62A6AC63D1B578DB97F1234361D36B80BBA110"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TalntsApp\/talnts-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E964021DD554F9C4701A50D2DEF544206F37A204"
+    }
+  ]
+}

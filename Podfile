@@ -7,4 +7,5 @@ target 'MediaPicker' do
   pod 'Argo'
   pod 'Signals', '~> 2.3'
   pod 'BABCropperView', '~> 0.4'
+  pod 'JPSVolumeButtonHandler'
 end

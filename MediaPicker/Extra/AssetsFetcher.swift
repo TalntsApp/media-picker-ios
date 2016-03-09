@@ -149,7 +149,7 @@ extension PHAsset {
         
         let options = PHImageRequestOptions()
         options.deliveryMode = deliveryMode
-        options.resizeMode   = .Exact
+        options.resizeMode   = .Fast
         options.synchronous  = false
         
         let adjustedSize: CGSize
@@ -166,9 +166,7 @@ extension PHAsset {
             contentMode: PHImageContentMode.AspectFill,
             options: options
             ) { (image, info) -> Void in
-                async(.Main) {
-                    signal.fire(image)
-                }
+                signal.fire(image)
         }
         
         return signal
@@ -189,9 +187,7 @@ extension PHAsset {
             options
             ) { (asset, mix, info) -> Void in
                 if let asset = asset as? AVURLAsset {
-                    async(.Main) {
-                        signal.fire(asset)
-                    }
+                    signal.fire(asset)
                 }
         }
         
