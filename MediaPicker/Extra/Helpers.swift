@@ -130,3 +130,15 @@ extension SequenceType where Generator.Element: UIView {
             }}
     }
 }
+
+// Hashes
+
+func generateHash<T: Hashable>(object: T) -> (hash: String, timestamp: String) {
+    let hash      = UIntMax(abs(object.hashValue))
+    let timestamp = UIntMax(abs(NSDate().timeIntervalSinceReferenceDate * 1000))
+    
+    return (
+        hash: String(timestamp ^ hash, radix: 36, uppercase: false),
+        timestamp: String(timestamp, radix: 36, uppercase: false)
+    )
+}

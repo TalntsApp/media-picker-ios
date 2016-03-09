@@ -8,7 +8,7 @@ PODS:
 DEPENDENCIES:
   - Argo
   - BABCropperView (~> 0.4)
-  - JPSVolumeButtonHandler
+  - JPSVolumeButtonHandler (~> 1.0)
   - Runes
   - Signals (~> 2.3)
 

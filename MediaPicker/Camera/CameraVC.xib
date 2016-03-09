@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraVC" customModule="Talnts" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraPreviewView" destination="9fk-b2-BmY" id="6dj-8P-rPf"/>
+                <outlet property="lightButton" destination="dYj-lm-1LC" id="Ts9-r5-Nfg"/>
+                <outlet property="recordButton" destination="GjA-se-UdE" id="XjP-24-hec"/>
+                <outlet property="shootButton" destination="hHk-N0-w4v" id="zWA-Tp-Yfb"/>
+                <outlet property="switchButton" destination="lSX-PD-tPl" id="c4R-rH-Ss5"/>
+                <outlet property="timerIndicator" destination="9If-mv-HAp" id="chM-ms-I8j"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fk-b2-BmY" customClass="CameraPreview" customModule="Talnts" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjA-se-UdE" customClass="RecordButton" customModule="Talnts" customModuleProvider="target">
+                            <rect key="frame" x="266" y="472" width="68" height="68"/>
+                            <color key="tintColor" red="0.91372549020000005" green="0.35294117650000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="GjA-se-UdE" secondAttribute="height" multiplier="1:1" id="csm-8s-vGM"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHk-N0-w4v" userLabel="Take Picture">
+                            <rect key="frame" x="266" y="472" width="68" height="68"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="hHk-N0-w4v" secondAttribute="height" multiplier="1:1" id="006-TZ-vQq"/>
+                                <constraint firstAttribute="width" constant="68" id="5mj-4d-ReF"/>
+                            </constraints>
+                            <state key="normal" image="photoButton">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSX-PD-tPl" userLabel="Switch Camera">
+                            <rect key="frame" x="385" y="493" width="31" height="25"/>
+                            <state key="normal" image="change_camera">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9If-mv-HAp" userLabel="Timer Label">
+                            <rect key="frame" x="300" y="8" width="0.0" height="0.0"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="1"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYj-lm-1LC">
+                            <rect key="frame" x="175" y="492" width="50" height="27"/>
+                            <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Auto" image="flash">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="hHk-N0-w4v" firstAttribute="centerY" secondItem="lSX-PD-tPl" secondAttribute="centerY" id="1Dj-Tt-nGQ"/>
+                        <constraint firstItem="lSX-PD-tPl" firstAttribute="centerX" secondItem="hHk-N0-w4v" secondAttribute="centerX" constant="100" id="4cW-D4-iQu"/>
+                        <constraint firstItem="dYj-lm-1LC" firstAttribute="centerY" secondItem="hHk-N0-w4v" secondAttribute="centerY" id="6Yr-bv-exL"/>
+                        <constraint firstAttribute="bottom" secondItem="hHk-N0-w4v" secondAttribute="bottom" constant="60" id="AgP-wX-ve1"/>
+                        <constraint firstAttribute="centerX" secondItem="hHk-N0-w4v" secondAttribute="centerX" id="EIL-O5-e33"/>
+                        <constraint firstItem="GjA-se-UdE" firstAttribute="bottom" secondItem="hHk-N0-w4v" secondAttribute="bottom" id="JA1-Jl-KsK"/>
+                        <constraint firstItem="hHk-N0-w4v" firstAttribute="centerX" secondItem="dYj-lm-1LC" secondAttribute="centerX" constant="100" id="THC-9g-iXu"/>
+                        <constraint firstAttribute="centerX" secondItem="GjA-se-UdE" secondAttribute="centerX" id="gF3-aV-pc3"/>
+                        <constraint firstItem="dYj-lm-1LC" firstAttribute="centerY" secondItem="GjA-se-UdE" secondAttribute="centerY" id="gJK-8C-QtT"/>
+                        <constraint firstItem="lSX-PD-tPl" firstAttribute="centerY" secondItem="GjA-se-UdE" secondAttribute="centerY" id="iiu-qO-kl1"/>
+                        <constraint firstAttribute="centerX" secondItem="9If-mv-HAp" secondAttribute="centerX" id="qkY-po-VHO"/>
+                        <constraint firstItem="9If-mv-HAp" firstAttribute="top" secondItem="9fk-b2-BmY" secondAttribute="topMargin" id="r1b-XU-MzJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9fk-b2-BmY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0bG-av-ydP"/>
+                <constraint firstAttribute="bottom" secondItem="9fk-b2-BmY" secondAttribute="bottom" id="E9I-eg-4rS"/>
+                <constraint firstAttribute="trailing" secondItem="9fk-b2-BmY" secondAttribute="trailing" id="MOZ-kf-xr4"/>
+                <constraint firstItem="9fk-b2-BmY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zVl-Cf-paZ"/>
+            </constraints>
+            <point key="canvasLocation" x="578" y="331"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="change_camera" width="31" height="25"/>
+        <image name="flash" width="12" height="27"/>
+        <image name="photoButton" width="68" height="68"/>
+    </resources>
+</document>

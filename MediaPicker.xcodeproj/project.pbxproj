@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98494CA01C903D6500605A1B /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98494C9D1C903D6500605A1B /* CameraVC.swift */; };
+		98494CA11C903D6500605A1B /* CameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98494C9E1C903D6500605A1B /* CameraVC.xib */; };
+		98494CA21C903D6500605A1B /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98494C9F1C903D6500605A1B /* RecordButton.swift */; };
 		9863DC631C77629600F033BB /* AssetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863DC501C77629600F033BB /* AssetsCell.swift */; };
 		9863DC641C77629600F033BB /* AssetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9863DC511C77629600F033BB /* AssetsCell.xib */; };
 		9863DC651C77629600F033BB /* AssetsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863DC531C77629600F033BB /* AssetsFetcher.swift */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		0E7F702207CB3CAF131818D4 /* Pods_MediaPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediaPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98494C9D1C903D6500605A1B /* CameraVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		98494C9E1C903D6500605A1B /* CameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraVC.xib; sourceTree = "<group>"; };
+		98494C9F1C903D6500605A1B /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		984B65E61C68C9B200F453C9 /* MediaPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediaPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9863DC501C77629600F033BB /* AssetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsCell.swift; sourceTree = "<group>"; };
 		9863DC511C77629600F033BB /* AssetsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssetsCell.xib; sourceTree = "<group>"; };
@@ -76,6 +82,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		98494C9C1C903D6500605A1B /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				98494C9D1C903D6500605A1B /* CameraVC.swift */,
+				98494C9E1C903D6500605A1B /* CameraVC.xib */,
+				98494C9F1C903D6500605A1B /* RecordButton.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		984B65DC1C68C9B200F453C9 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +113,7 @@
 		9863DC4E1C77629600F033BB /* MediaPicker */ = {
 			isa = PBXGroup;
 			children = (
+				98494C9C1C903D6500605A1B /* Camera */,
 				9863DC4F1C77629600F033BB /* AssetsCell */,
 				9863DC521C77629600F033BB /* Extra */,
 				9863DC591C77629600F033BB /* List */,
@@ -250,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9863DC701C77629600F033BB /* MediaListTitleView.xib in Resources */,
+				98494CA11C903D6500605A1B /* CameraVC.xib in Resources */,
 				9863DC691C77629600F033BB /* Images.xcassets in Resources */,
 				9863DC6C1C77629600F033BB /* MediaList.xib in Resources */,
 				9863DC641C77629600F033BB /* AssetsCell.xib in Resources */,
@@ -299,7 +317,9 @@
 			files = (
 				9863DC661C77629600F033BB /* Helpers.swift in Sources */,
 				9863DC6D1C77629600F033BB /* MediaPicker.swift in Sources */,
+				98494CA21C903D6500605A1B /* RecordButton.swift in Sources */,
 				9863DC671C77629600F033BB /* Parallel.swift in Sources */,
+				98494CA01C903D6500605A1B /* CameraVC.swift in Sources */,
 				9863DC6F1C77629600F033BB /* MediaListTitleView.swift in Sources */,
 				9863DC651C77629600F033BB /* AssetsFetcher.swift in Sources */,
 				9863DC6B1C77629600F033BB /* MediaList.swift in Sources */,
