@@ -1,7 +1,7 @@
 PODS:
   - Argo (2.2.0)
   - BABCropperView (0.4.6)
-  - MediaPicker (0.0.8):
+  - MediaPicker (0.0.10):
     - Argo
     - BABCropperView (~> 0.4)
     - Runes
@@ -15,7 +15,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Argo: 4f52a32b4cd913c204e5a45f420b3fccad3e3f24
   BABCropperView: 908858c9fd17e9bb6d2446f3ae56172c14363974
-  MediaPicker: da4d3f044cc109325a3a57057738d0cf6715d811
+  MediaPicker: 0982d92c5b4a7ac5563f45c02d57079302b2b43f
   Runes: ab2f892272d5165f64620f8086578b28cde98a02
   Signals: d47128787e1675858f956556397e482fd667bd96
 
