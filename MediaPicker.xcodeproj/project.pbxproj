@@ -10,6 +10,8 @@
 		98494CA01C903D6500605A1B /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98494C9D1C903D6500605A1B /* CameraVC.swift */; };
 		98494CA11C903D6500605A1B /* CameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98494C9E1C903D6500605A1B /* CameraVC.xib */; };
 		98494CA21C903D6500605A1B /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98494C9F1C903D6500605A1B /* RecordButton.swift */; };
+		98517E601C91549300D4B92F /* SwitcherMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98517E5E1C91549300D4B92F /* SwitcherMenu.swift */; };
+		98517E611C91549300D4B92F /* SwitcherMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98517E5F1C91549300D4B92F /* SwitcherMenu.xib */; };
 		9863DC631C77629600F033BB /* AssetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863DC501C77629600F033BB /* AssetsCell.swift */; };
 		9863DC641C77629600F033BB /* AssetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9863DC511C77629600F033BB /* AssetsCell.xib */; };
 		9863DC651C77629600F033BB /* AssetsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863DC531C77629600F033BB /* AssetsFetcher.swift */; };
@@ -35,6 +37,8 @@
 		98494C9E1C903D6500605A1B /* CameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraVC.xib; sourceTree = "<group>"; };
 		98494C9F1C903D6500605A1B /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		984B65E61C68C9B200F453C9 /* MediaPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediaPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98517E5E1C91549300D4B92F /* SwitcherMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitcherMenu.swift; sourceTree = "<group>"; };
+		98517E5F1C91549300D4B92F /* SwitcherMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitcherMenu.xib; sourceTree = "<group>"; };
 		9863DC501C77629600F033BB /* AssetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsCell.swift; sourceTree = "<group>"; };
 		9863DC511C77629600F033BB /* AssetsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssetsCell.xib; sourceTree = "<group>"; };
 		9863DC531C77629600F033BB /* AssetsFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsFetcher.swift; sourceTree = "<group>"; };
@@ -110,6 +114,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		98517E5D1C91549300D4B92F /* SwitcherMenu */ = {
+			isa = PBXGroup;
+			children = (
+				98517E5E1C91549300D4B92F /* SwitcherMenu.swift */,
+				98517E5F1C91549300D4B92F /* SwitcherMenu.xib */,
+			);
+			path = SwitcherMenu;
+			sourceTree = "<group>";
+		};
 		9863DC4E1C77629600F033BB /* MediaPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +132,7 @@
 				9863DC591C77629600F033BB /* List */,
 				9863DC5C1C77629600F033BB /* Picker */,
 				9863DC5F1C77629600F033BB /* TitleView */,
+				98517E5D1C91549300D4B92F /* SwitcherMenu */,
 				9863DC711C77631100F033BB /* Supporting files */,
 			);
 			path = MediaPicker;
@@ -271,6 +285,7 @@
 				9863DC691C77629600F033BB /* Images.xcassets in Resources */,
 				9863DC6C1C77629600F033BB /* MediaList.xib in Resources */,
 				9863DC641C77629600F033BB /* AssetsCell.xib in Resources */,
+				98517E611C91549300D4B92F /* SwitcherMenu.xib in Resources */,
 				9863DC6E1C77629600F033BB /* MediaPicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +333,7 @@
 				9863DC661C77629600F033BB /* Helpers.swift in Sources */,
 				9863DC6D1C77629600F033BB /* MediaPicker.swift in Sources */,
 				98494CA21C903D6500605A1B /* RecordButton.swift in Sources */,
+				98517E601C91549300D4B92F /* SwitcherMenu.swift in Sources */,
 				9863DC671C77629600F033BB /* Parallel.swift in Sources */,
 				98494CA01C903D6500605A1B /* CameraVC.swift in Sources */,
 				9863DC6F1C77629600F033BB /* MediaListTitleView.swift in Sources */,
