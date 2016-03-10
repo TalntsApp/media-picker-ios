@@ -9,4 +9,5 @@ target 'MediaPicker' do
   pod 'BABCropperView', "~> 0.4"
   pod 'JPSVolumeButtonHandler', "~> 1.0"
   pod 'Cartography', "~> 0.6.0"
+  pod 'PermissionScope', "~> 1.0.2"
 end
