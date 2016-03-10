@@ -13,7 +13,7 @@ import BABCropperView
  ----
  
  Control that allows you to pick media from gallery.
-*/
+ */
 public class MediaPicker: UIView, ImageSource, VideoSource {
     
     /// Image from gallery was selected
@@ -229,61 +229,65 @@ public class MediaPicker: UIView, ImageSource, VideoSource {
     }
     
     private func setupVideoPreview(asset: AVURLAsset) {
-        let videoPreview = UIView(frame: self.largePreview.bounds)
-        videoPreview.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        videoPreview.backgroundColor = UIColor.clearColor()
-        self.largePreview.addSubview(videoPreview)
-        
-        self.videoPreview = videoPreview
-        
-        //        videoPreview.remoteURL = asset.URL.absoluteString
-        
-        let statusBarHidden = UIApplication.sharedApplication().statusBarHidden
-        let movieController = MPMoviePlayerViewController(contentURL: asset.URL)
-        
-        let player = movieController.view
-        
-        videoPreview.contentMode = .ScaleAspectFill
-        player.contentMode = .ScaleAspectFill
-        
-        player.frame = videoPreview.bounds
-        player.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        
-        player.removeFromSuperview()
-        videoPreview.addSubview(player)
-        videoPreview.bringSubviewToFront(player)
-        
-        if
-            let vc = player.viewController as? MPMoviePlayerViewController,
-            let mp = vc.moviePlayer
-        {
-            //            mp.controlStyle = .None
-            mp.shouldAutoplay = false
-            UIApplication.sharedApplication().statusBarHidden = statusBarHidden
-            
-            //            let playControlView = PlayControlView(frame: player.bounds)
-            //            playControlView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            //            player.addSubview(playControlView)
-            //
-            //            playControlView.onTouchDown.listen(self) { [weak playControlView] in
-            //                if let state = playControlView?.playControlState {
-            //                    switch state {
-            //                    case .Pause:
-            //                        mp.pause()
-            //                    case .Play:
-            //                        mp.play()
-            //                    default:
-            //                        break
-            //                    }
-            //                }
-            //            }
-            //            playControlView.playControlState = .Play
-            //                playControlView.enableTouch = true
-            //            self.videoPlayControl = playControlView
-            //
-            //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoPlaybackStateChanged:"), name: MPMoviePlayerPlaybackStateDidChangeNotification, object: mp)
-            //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoWentFullscreen:"), name: MPMoviePlayerWillEnterFullscreenNotification, object: mp)
-            //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoReturnedFromFullscreen:"), name: MPMoviePlayerDidExitFullscreenNotification, object: mp)
+        async(.Main) { [weak self] in
+            if let `self` = self {
+                let videoPreview = UIView(frame: self.largePreview.bounds)
+                videoPreview.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+                videoPreview.backgroundColor = UIColor.purpleColor()
+                self.largePreview.addSubview(videoPreview)
+                
+                self.videoPreview = videoPreview
+                
+                //        videoPreview.remoteURL = asset.URL.absoluteString
+                
+                //        let statusBarHidden = UIApplication.sharedApplication().statusBarHidden
+                let movieController = MPMoviePlayerViewController(contentURL: asset.URL)
+                
+                let player = movieController.view
+                
+                videoPreview.contentMode = .ScaleAspectFill
+                player.contentMode = .ScaleAspectFill
+                
+                player.frame = videoPreview.bounds
+                player.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+                
+                player.removeFromSuperview()
+                videoPreview.addSubview(player)
+                videoPreview.bringSubviewToFront(player)
+                
+                if
+                    let vc = player.viewController as? MPMoviePlayerViewController,
+                    let mp = vc.moviePlayer
+                {
+                    //            mp.controlStyle = .None
+                    mp.shouldAutoplay = false
+                    //            UIApplication.sharedApplication().statusBarHidden = statusBarHidden
+                    //
+                    //            let playControlView = PlayControlView(frame: player.bounds)
+                    //            playControlView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+                    //            player.addSubview(playControlView)
+                    //
+                    //            playControlView.onTouchDown.listen(self) { [weak playControlView] in
+                    //                if let state = playControlView?.playControlState {
+                    //                    switch state {
+                    //                    case .Pause:
+                    //                        mp.pause()
+                    //                    case .Play:
+                    //                        mp.play()
+                    //                    default:
+                    //                        break
+                    //                    }
+                    //                }
+                    //            }
+                    //            playControlView.playControlState = .Play
+                    //            playControlView.enableTouch = true
+                    //            self.videoPlayControl = playControlView
+                    //
+                    //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoPlaybackStateChanged:"), name: MPMoviePlayerPlaybackStateDidChangeNotification, object: mp)
+                    //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoWentFullscreen:"), name: MPMoviePlayerWillEnterFullscreenNotification, object: mp)
+                    //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoReturnedFromFullscreen:"), name: MPMoviePlayerDidExitFullscreenNotification, object: mp)
+                }
+            }
         }
     }
     
