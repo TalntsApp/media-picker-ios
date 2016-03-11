@@ -12,19 +12,17 @@ import Runes
 
 import Cartography
 
-class SwitcherMenu: UIViewController {
+public class SwitcherMenu: UIViewController {
     
-    var onTap: [ImageSourceType: () -> Void] = [:]
+    public var onTap: [MediaSourceType: () -> Void] = [:]
     
-    private(set) var items: [ImageSourceType: UIButton] = [:]
-    private(set) var buttons: [UIButton] = []
+    private(set) public var items: [MediaSourceType: UIButton] = [:]
+    private(set) public var buttons: [UIButton] = []
     
-    let selectedColor = UIColor.redColor()
-    
-    init(items: Set<ImageSourceType>) {
+    public init(items: Set<MediaSourceType>, selectedColor: UIColor) {
         super.init(nibName: "SwitcherMenu", bundle: nil)
         
-        self.items = Array(items).reduce([:], combine: { (var acc, item) -> [ImageSourceType: UIButton] in
+        self.items = items.reduce([:], combine: { (var acc, item) -> [MediaSourceType: UIButton] in
             let uiButton: UIButton = (UIButton(type: UIButtonType.Custom))
             
             uiButton.setTitle(item.title, forState: .Normal)
@@ -39,7 +37,7 @@ class SwitcherMenu: UIViewController {
         self.buttons = self.items.sorted({$0.0 <= $1.0}).map({ (_, btn) in btn })
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -47,7 +45,7 @@ class SwitcherMenu: UIViewController {
         
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         let buttonsArray = items.sorted({ $0.0 < $1.0 })
@@ -98,7 +96,7 @@ class SwitcherMenu: UIViewController {
         
         items[.Gallery]?.selected = true
         
-        keys.forEach {[weak self] (key: ImageSourceType) -> Void in
+        keys.forEach {[weak self] (key: MediaSourceType) -> Void in
             if let `self` = self {
                 let signal = self.items[key]?.onTouchDown
                 
@@ -119,12 +117,12 @@ class SwitcherMenu: UIViewController {
     
 }
 
-enum ImageSourceType: CustomStringConvertible, Comparable {
+public enum MediaSourceType: CustomStringConvertible, Comparable {
     case Gallery
     case Photo
     case Video
     
-    var description: String {
+    public var description: String {
         switch self {
         case .Gallery:
             return "Gallery"
@@ -147,7 +145,7 @@ enum ImageSourceType: CustomStringConvertible, Comparable {
     }
 }
 
-func ==(lhs: ImageSourceType, rhs: ImageSourceType) -> Bool {
+public func ==(lhs: MediaSourceType, rhs: MediaSourceType) -> Bool {
     switch (lhs, rhs) {
     case (.Gallery, .Gallery), (.Photo, .Photo), (.Video, .Video):
         return true
@@ -156,7 +154,7 @@ func ==(lhs: ImageSourceType, rhs: ImageSourceType) -> Bool {
     }
 }
 
-func <(lhs: ImageSourceType, rhs: ImageSourceType) -> Bool {
+public func <(lhs: MediaSourceType, rhs: MediaSourceType) -> Bool {
     switch (lhs, rhs) {
     case (.Gallery, .Photo), (.Gallery, .Video), (.Photo, .Video):
         return true
