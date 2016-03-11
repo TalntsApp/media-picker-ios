@@ -9,7 +9,7 @@
 import UIKit
 import MediaPicker
 
-class ViewController: UIViewController {
+class ViewController: MediaSourceSwitcher {
     
     @IBOutlet var mediaPicker: MediaPicker!
 
@@ -31,6 +31,12 @@ class ViewController: UIViewController {
         }
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let switcher = MediaSourceSwitcher(maskType: .Circle, selectedColor: UIColor.redColor())
+        self.presentViewController(switcher, animated: true, completion: nil)
+    }
 
 }
 

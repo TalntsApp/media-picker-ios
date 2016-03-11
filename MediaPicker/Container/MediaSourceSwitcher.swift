@@ -26,7 +26,7 @@ public class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDele
     }
     
     private var switcherMenu: SwitcherMenu?
-    convenience init(maskType: MediaPicker.MaskType, selectedColor: UIColor) {
+    public convenience init(maskType: MediaPicker.MaskType, selectedColor: UIColor) {
         self.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [:])
         
         imageSources[.Gallery] = MediaPicker(maskType: maskType)

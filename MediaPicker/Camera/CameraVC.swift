@@ -48,7 +48,7 @@ public class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
     private(set) internal var cameraType: CameraType = .Photo
     
     public init(cameraType: CameraType) {
-        let bundle = NSBundle(forClass: CameraVC.self)
+        let bundle = NSBundle(forClass: self.dynamicType)
         super.init(nibName: "CameraVC", bundle: bundle)
         
         self.cameraType = cameraType

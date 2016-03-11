@@ -63,7 +63,7 @@ public class MediaList: UICollectionViewController, PHPhotoLibraryChangeObserver
      - parameter photosOnly: Set to `true` if you want just photos in the list, without videos. Default: `false`.
     */
     public init(photosOnly: Bool = false) {
-        let bundle = NSBundle(forClass: MediaList.self)
+        let bundle = NSBundle(forClass: self.dynamicType)
         super.init(nibName: "MediaList", bundle: bundle)
         self.photosOnly = photosOnly
     }

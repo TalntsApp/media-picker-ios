@@ -20,7 +20,8 @@ public class SwitcherMenu: UIViewController {
     private(set) public var buttons: [UIButton] = []
     
     public init(items: Set<MediaSourceType>, selectedColor: UIColor) {
-        super.init(nibName: "SwitcherMenu", bundle: nil)
+        let bundle = NSBundle(forClass: self.dynamicType)
+        super.init(nibName: "SwitcherMenu", bundle: bundle)
         
         self.items = items.reduce([:], combine: { (var acc, item) -> [MediaSourceType: UIButton] in
             let uiButton: UIButton = (UIButton(type: UIButtonType.Custom))
