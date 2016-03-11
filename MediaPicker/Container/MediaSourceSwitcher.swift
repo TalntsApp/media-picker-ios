@@ -8,17 +8,17 @@
 
 import UIKit
 import AVFoundation
-import TalntsUI
-import SwipeBack
 import Runes
 
-class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, ImageSource, VideoSource, HideHamburger {
+import Signals
+
+class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, ImageSource, VideoSource {
     
     var onImageReady: (UIImage -> Void)?
     var onVideoReady: (AVURLAsset -> Void)?
     var onClose: (() -> Void)?
     
-    private var imageSources: [ImageSourceType: UIViewController] = [:]
+    private var imageSources: [MediaSourceType: UIViewController] = [:]
     private var sourcesArray: [UIViewController] {
         return imageSources.sorted({$0.0 < $1.0}).map { (_, vc) in
             vc
@@ -26,17 +26,17 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
     }
     
     private var switcherMenu: SwitcherMenu?
-    convenience init(maskType: ImageSelection.MaskType) {
+    convenience init(selectedColor: UIColor) {
         self.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [:])
         
-        imageSources[.Gallery] = ImageSelection(maskType: maskType)
+//        imageSources[.Gallery] = MediaPicker(maskType: maskType)
         
         if CameraVC.authorizationStatus == .Authorized {
             imageSources[.Photo] = CameraVC(cameraType: .Photo)
             imageSources[.Video] = CameraVC(cameraType: .Video)
         }
         
-        self.switcherMenu = SwitcherMenu(items: Set(Array(imageSources.keys)))
+        self.switcherMenu = SwitcherMenu(items: Set(Array(imageSources.keys)), selectedColor: selectedColor)
     }
     
     override func viewDidLoad() {
@@ -119,24 +119,16 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.swipeBackEnabled = false
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        navigationController?.navigationBarType = NavigationBarType.BlackFlat(height:44)
-        
-        let imageSource = imageSources[.Gallery] as! ImageSelection
-        self.setViewControllers([imageSource], direction: .Forward, animated: false, completion: nil)
-        switcherMenu?.items.forEach { type, button -> Void in button.selected = (type == .Gallery) }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.swipeBackEnabled = true
+//        let imageSource = imageSources[.Gallery] as! MediaPicker
+//        self.setViewControllers([imageSource], direction: .Forward, animated: false, completion: nil)
+//        switcherMenu?.items.forEach { type, button -> Void in button.selected = (type == .Gallery) }
     }
     
     // Data Source
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         if let index = (sourcesArray as [UIViewController]).indexOf(viewController) {
             let prev = index - 1
-            return valueAtIndex(sourcesArray, prev)
+            return sourcesArray[prev]
         }
         return nil
     }
@@ -144,7 +136,7 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         if let index = (sourcesArray as [UIViewController]).indexOf(viewController) {
             let next = index + 1
-            return valueAtIndex(sourcesArray, next)
+            return sourcesArray[next]
         }
         return nil
     }
@@ -169,22 +161,14 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
             }
         }
     }
-    
-    func hideHamburger() -> Bool {
-        return true
+}
+
+extension CollectionType {
+    subscript(index: Index) -> Generator.Element? {
+        if (self.startIndex ..< self.endIndex).contains(index) {
+            return self[index] as Generator.Element
+        } else {
+            return nil
+        }
     }
-}
-
-protocol ImageSource {
-    
-    var onImageReady: (UIImage -> Void)? { get set }
-    var onClose: (() -> Void)? { get set }
-    
-}
-
-protocol VideoSource {
-    
-    var onVideoReady: (AVURLAsset -> Void)? { get set }
-    var onClose: (() -> Void)? { get set }
-
 }

@@ -133,7 +133,7 @@ public enum MediaSourceType: CustomStringConvertible, Comparable {
         }
     }
     
-    var title: String {
+    public var title: String {
         switch self {
         case .Gallery:
             return NSLocalizedString("Gallery", comment: "Gallery")

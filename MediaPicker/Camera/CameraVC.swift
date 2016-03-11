@@ -136,10 +136,6 @@ public class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
         }
     }
     
-    func hideHamburger() -> Bool {
-        return true
-    }
-    
     private var volumeHandler: JPSVolumeButtonHandler?
     private var flashObserver: NSObjectProtocol?
     override public func viewWillAppear(animated: Bool) {
