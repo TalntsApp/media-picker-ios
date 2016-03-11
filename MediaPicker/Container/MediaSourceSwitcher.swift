@@ -12,11 +12,11 @@ import Runes
 
 import Signals
 
-class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, ImageSource, VideoSource {
+public class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, ImageSource, VideoSource {
     
-    var onImageReady: (UIImage -> Void)?
-    var onVideoReady: (AVURLAsset -> Void)?
-    var onClose: (() -> Void)?
+    public var onImageReady: (UIImage -> Void)?
+    public var onVideoReady: (AVURLAsset -> Void)?
+    public var onClose: (() -> Void)?
     
     private var imageSources: [MediaSourceType: UIViewController] = [:]
     private var sourcesArray: [UIViewController] {
@@ -26,10 +26,10 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
     }
     
     private var switcherMenu: SwitcherMenu?
-    convenience init(selectedColor: UIColor) {
+    convenience init(maskType: MediaPicker.MaskType, selectedColor: UIColor) {
         self.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [:])
         
-//        imageSources[.Gallery] = MediaPicker(maskType: maskType)
+        imageSources[.Gallery] = MediaPicker(maskType: maskType)
         
         if CameraVC.authorizationStatus == .Authorized {
             imageSources[.Photo] = CameraVC(cameraType: .Photo)
@@ -39,7 +39,7 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
         self.switcherMenu = SwitcherMenu(items: Set(Array(imageSources.keys)), selectedColor: selectedColor)
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         Array(imageSources).forEach { (type, controller) -> Void in
@@ -69,7 +69,7 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
         self.view.addSubview <^> menu
     }
     
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         switcherMenu?.view?.frame = CGRect(x: 0, y: self.view.bounds.height - 40, width: self.view.bounds.width, height: 40)
     }
     
@@ -116,7 +116,7 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
         objc_sync_exit(self)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
 //        let imageSource = imageSources[.Gallery] as! MediaPicker
@@ -125,7 +125,7 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
     }
     
     // Data Source
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         if let index = (sourcesArray as [UIViewController]).indexOf(viewController) {
             let prev = index - 1
             return sourcesArray[prev]
@@ -133,7 +133,7 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
         return nil
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         if let index = (sourcesArray as [UIViewController]).indexOf(viewController) {
             let next = index + 1
             return sourcesArray[next]
@@ -141,7 +141,7 @@ class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDelegate, U
         return nil
     }
     
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
             asyncWith(self, priority: .Main) { [weak self] in
                 if

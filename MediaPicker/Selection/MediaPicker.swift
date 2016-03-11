@@ -14,7 +14,7 @@ import BABCropperView
  
  Control that allows you to pick media from gallery.
  */
-public class MediaPicker: UIView, ImageSource, VideoSource {
+public class MediaPicker: UIViewController, ImageSource, VideoSource {
     
     /// Image from gallery was selected
     public var onImageReady: (UIImage -> Void)?
@@ -24,12 +24,11 @@ public class MediaPicker: UIView, ImageSource, VideoSource {
     public var onClose: (() -> Void)?
     
     private weak var selectedAsset: PHAsset?
-    
-    @IBOutlet var view: UIView?
-    
     @IBOutlet var largePreviewConstraint: NSLayoutConstraint!
     @IBOutlet var largePreview: BABCropperView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var videoPreview: UIView?
+    @IBOutlet var videoPlayControl: PlayControlView?
     
     @IBOutlet var upButtonConstraint: NSLayoutConstraint!
     @IBOutlet var upButton: UIButton!
@@ -37,23 +36,6 @@ public class MediaPicker: UIView, ImageSource, VideoSource {
     
     @IBOutlet var collectionHost: UIView!
     
-    @IBOutlet var videoPreview: UIView?
-    @IBOutlet var videoPlayControl: PlayControlView?
-    
-    @IBInspectable var photosOnly: Bool = false
-    
-    /// Overrides `UIView`'s `awakeFromNib`
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        
-        let bundle = NSBundle(forClass: MediaPicker.self)
-        if let _ = bundle.loadNibNamed("MediaPicker", owner: self, options: nil) {
-            self.view?.frame = self.bounds
-            self.addSubview <^> self.view
-            
-            setup()
-        }
-    }
     
     private enum PreviewState: CustomStringConvertible {
         case AllWayUp
@@ -113,11 +95,62 @@ public class MediaPicker: UIView, ImageSource, VideoSource {
         }
     }
     
-    /// Overrides `UIView`'s `layoutSubviews`
-    override public func layoutSubviews() {
-        super.layoutSubviews()
+    public enum MaskType {
+        case Rectangle
+        case Circle
+    }
+    private(set) public var maskType: MaskType = .Rectangle
+    
+    private(set) var photosOnly: Bool = false
+    public convenience init(maskType: MaskType = .Rectangle, photosOnly: Bool = false) {
+        self.init(nibName: "ImageSelection", bundle: nil)
+        self.photosOnly = photosOnly
+        
+        self.maskType = maskType
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupForm()
+        
+        self.edgesForExtendedLayout = UIRectEdge.None
+    }
+    
+    func hideHamburger() -> Bool {
+        return true
+    }
+    
+    override public func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let title: String = photosOnly ? "Choose photo" : "Choose photo or video"
+        navigationController?.topViewController?.navigationItem.title = title
+        
+        setupBackButton()
+        setupNextButton()
+        
+        if let selectedPath = self.imageCollection?.indexPathsForSelectedItems()?.first
+        {
+            let asset = self.imageList.assets[selectedPath.section].assets[selectedPath.item]
+            self.handleSelection(selectedPath, asset)
+        }
+    }
+    
+    override public func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         setupCropper()
+        
+        imageList.viewDidLayoutSubviews()
     }
     
     private func setupCropper() {
@@ -127,9 +160,12 @@ public class MediaPicker: UIView, ImageSource, VideoSource {
     
     private lazy var imageList:MediaList = MediaList(photosOnly: self.photosOnly)
     private var imageCollection: UICollectionView?
-    
-    func setup() {
-        self.viewController?.addChildViewController(imageList)
+    func setupForm() {
+        self.largePreview.clipsToBounds = true
+        self.largePreview.cropsImageToCircle = (self.maskType == .Circle)
+        self.largePreview.leavesUnfilledRegionsTransparent = true
+        
+        self.addChildViewController(imageList)
         
         imageCollection = imageList.collectionView
         imageCollection?.frame = self.collectionHost.bounds
@@ -198,17 +234,15 @@ public class MediaPicker: UIView, ImageSource, VideoSource {
     }
     
     private func handleScroll(offset: CGFloat) {
-        
         if self.previewState == .FreeScroll {
+            self.largePreviewConstraint?.constant = offset
+            
+            let verticalTransform = (offset/self.largePreview.frame.height + 1/2) * 2
+            
             self.upButton.synced {
                 Animate(duration: 0.6, options: .CurveEaseOut)
                     .animation { [weak self] in
-                        if let `self` = self {
-                            self.largePreviewConstraint?.constant = offset
-                            
-                            let verticalTransform = round((offset/self.largePreview.frame.height + 1/2) * 2)
-                            self.upButtonIcon.transform = CGAffineTransformMakeScale(1.0, clip(low: -1.0, high: 1.0)(value: verticalTransform))
-                        }
+                        self?.upButtonIcon.transform = CGAffineTransformMakeScale(1.0, clip(low: -1.0, high: 1.0)(value: verticalTransform))
                     }
                     .fire()
             }
@@ -229,64 +263,101 @@ public class MediaPicker: UIView, ImageSource, VideoSource {
     }
     
     private func setupVideoPreview(asset: AVURLAsset) {
-        async(.Main) { [weak self] in
-            if let `self` = self {
-                let videoPreview = UIView(frame: self.largePreview.bounds)
-                videoPreview.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-                videoPreview.backgroundColor = UIColor.purpleColor()
-                self.largePreview.addSubview(videoPreview)
-                
-                self.videoPreview = videoPreview
-                
-                //        videoPreview.remoteURL = asset.URL.absoluteString
-                
-                //        let statusBarHidden = UIApplication.sharedApplication().statusBarHidden
-                let movieController = MPMoviePlayerViewController(contentURL: asset.URL)
-                
-                let player = movieController.view
-                
-                videoPreview.contentMode = .ScaleAspectFill
-                player.contentMode = .ScaleAspectFill
-                
-                player.frame = videoPreview.bounds
-                player.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-                
-                player.removeFromSuperview()
-                videoPreview.addSubview(player)
-                videoPreview.bringSubviewToFront(player)
-                
-                if
-                    let vc = player.viewController as? MPMoviePlayerViewController,
-                    let mp = vc.moviePlayer
-                {
-                    //            mp.controlStyle = .None
-                    mp.shouldAutoplay = false
-                    //            UIApplication.sharedApplication().statusBarHidden = statusBarHidden
-                    //
-                    //            let playControlView = PlayControlView(frame: player.bounds)
-                    //            playControlView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-                    //            player.addSubview(playControlView)
-                    //
-                    //            playControlView.onTouchDown.listen(self) { [weak playControlView] in
-                    //                if let state = playControlView?.playControlState {
-                    //                    switch state {
-                    //                    case .Pause:
-                    //                        mp.pause()
-                    //                    case .Play:
-                    //                        mp.play()
-                    //                    default:
-                    //                        break
-                    //                    }
-                    //                }
-                    //            }
-                    //            playControlView.playControlState = .Play
-                    //            playControlView.enableTouch = true
-                    //            self.videoPlayControl = playControlView
-                    //
-                    //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoPlaybackStateChanged:"), name: MPMoviePlayerPlaybackStateDidChangeNotification, object: mp)
-                    //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoWentFullscreen:"), name: MPMoviePlayerWillEnterFullscreenNotification, object: mp)
-                    //            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoReturnedFromFullscreen:"), name: MPMoviePlayerDidExitFullscreenNotification, object: mp)
+    }
+    
+    private var statusBarHidden: Bool = UIApplication.sharedApplication().statusBarHidden
+    @objc(videoWentFullscreen:)
+    private func videoWentFullscreen(notification: NSNotification) {
+        statusBarHidden = UIApplication.sharedApplication().statusBarHidden
+    }
+    
+    @objc(videoReturnedFromFullscreen:)
+    private func videoReturnedFromFullscreen(notification: NSNotification) {
+        UIApplication.sharedApplication().statusBarHidden = statusBarHidden
+    }
+    
+    @objc(videoPlaybackStateChanged:)
+    private func videoPlaybackStateChanged(notification: NSNotification) {
+        if let player = notification.object as? MPMoviePlayerController {
+            switch player.playbackState {
+            case .Paused:
+                videoPlayControl?.playControlState = .Play
+            case .Playing:
+                videoPlayControl?.playControlState = .Pause
+            default:
+                videoPlayControl?.playControlState = .Wait
+            }
+        }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    private func setupBackButton() {
+        
+        let backImage = UIImage(named:"close-icon")
+        let img = UIImageView(image: backImage)
+        img.frame.size.width = img.frame.size.width
+        img.frame.size.height = img.frame.size.height
+        
+        let btn = UIButton(frame: img.frame)
+        btn.setImage(backImage, forState: UIControlState.Normal)
+        btn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btn.onTouchDown.listen(self) {[weak self] in self?.back()}
+        
+        navigationController?.topViewController?.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    func back() {
+        self.onClose?()
+    }
+    
+    private func setupNextButton() {
+        
+        let btn = UIButton(type: .System)
+        btn.bounds = CGRectMake(0, 0, 32, 20)
+        btn.setTitle("Next", forState: UIControlState.Normal)
+        btn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btn.sizeToFit()
+        btn.onTouchDown.listen(self) {[weak self] in self?.next()}
+        
+        navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    func next() {
+        if let asset = selectedAsset {
+            switch asset.mediaType {
+            case .Image:
+                asyncWith(self.largePreview, priority: .High) { [weak self, largePreview = self.largePreview] in
+                    self?.setupCropper()
+                    largePreview.cropsImageToCircle = false
+                    largePreview.renderCroppedImage { [weak self] (image, rect) in
+                        self?.onImageReady <*> image
+                    }
                 }
+            case .Video:
+                asset.urlAsset.listen(self) { [weak self] urlAsset in
+                    if
+                        let urlAsset = urlAsset,
+                        let `self` = self
+                    {
+                        let outputFileURL = urlAsset.URL
+                        
+//                        let videoVC = VideoCropViewController(videoURL: outputFileURL)
+//                        videoVC.onVideoReady = { [weak self] asset -> Void in
+//                            if let `self` = self {
+//                                self.onVideoReady?(asset)
+//                            }
+//                        }
+//                        videoVC.onClose = { [weak self] in
+//                            self?.navigationController?.popViewControllerAnimated(true)
+//                        }
+//                        self.navigationController?.pushViewController(videoVC, animated: true)
+                    }
+                }
+            default:
+                break
             }
         }
     }
