@@ -9,7 +9,7 @@
 import UIKit
 import MediaPicker
 
-class ViewController: MediaSourceSwitcher {
+class ViewController: UIViewController {
     
     @IBOutlet var mediaPicker: MediaPicker!
 

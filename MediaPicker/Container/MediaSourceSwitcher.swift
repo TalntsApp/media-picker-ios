@@ -119,9 +119,11 @@ public class MediaSourceSwitcher: UIPageViewController, UIPageViewControllerDele
     override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        let imageSource = imageSources[.Gallery] as! MediaPicker
-//        self.setViewControllers([imageSource], direction: .Forward, animated: false, completion: nil)
-//        switcherMenu?.items.forEach { type, button -> Void in button.selected = (type == .Gallery) }
+        
+        if let imageSource = imageSources[.Gallery] as? MediaPicker {
+            self.setViewControllers([imageSource], direction: .Forward, animated: false, completion: nil)
+            switcherMenu?.items.forEach { type, button -> Void in button.selected = (type == .Gallery) }
+        }
     }
     
     // Data Source

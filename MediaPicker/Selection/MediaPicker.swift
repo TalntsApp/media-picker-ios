@@ -103,7 +103,8 @@ public class MediaPicker: UIViewController, ImageSource, VideoSource {
     
     private(set) var photosOnly: Bool = false
     public convenience init(maskType: MaskType = .Rectangle, photosOnly: Bool = false) {
-        self.init(nibName: "ImageSelection", bundle: nil)
+        let bundle = NSBundle(forClass: self.dynamicType)
+        self.init(nibName: "MediaPicker", bundle: bundle)
         self.photosOnly = photosOnly
         
         self.maskType = maskType
