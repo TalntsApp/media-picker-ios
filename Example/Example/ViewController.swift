@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let switcher = MediaSourceSwitcher(maskType: .Circle, selectedColor: UIColor.redColor())
+        let switcher = MediaSourceSwitcher(maskType: .Rectangle, selectedColor: UIColor.redColor())
         self.presentViewController(switcher, animated: true, completion: nil)
     }
 
