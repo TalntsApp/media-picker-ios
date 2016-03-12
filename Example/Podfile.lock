@@ -3,7 +3,7 @@ PODS:
   - BABCropperView (0.4.6)
   - Cartography (0.6.0)
   - JPSVolumeButtonHandler (1.0.0)
-  - MediaPicker (0.0.20):
+  - MediaPicker (0.0.21):
     - Argo
     - BABCropperView (~> 0.4)
     - Cartography (~> 0.6.0)
@@ -23,7 +23,7 @@ SPEC CHECKSUMS:
   BABCropperView: 908858c9fd17e9bb6d2446f3ae56172c14363974
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   JPSVolumeButtonHandler: b056ec5c574fbd75a0637c527e25fe0197ec1648
-  MediaPicker: 52db17319387dfc53edda8e67169e97fb2518279
+  MediaPicker: f832b135f8f6a04f47cec2966bef98c83f1e6d8a
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   Runes: ab2f892272d5165f64620f8086578b28cde98a02
   Signals: d47128787e1675858f956556397e482fd667bd96
